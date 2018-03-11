@@ -7,12 +7,12 @@ Create an application to query the [GitHub API] (https://developer.github.com/v3
 ![bitbucket.png](https://bitbucket.org/repo/bApLBb/images/1070562783-bitbucket.png)
 ### **Deve conter** ###
 
-- __List of repositories__. Example call in API: `https://api.github.com/search/repositories?q=language:Java&sort=stars&page=1`
+- __List of repositories__. Example call in API: `https://api.github.com/search/repositories?q=language:Java&sort=stargazers_count&page=1`
   * Pagination on the list screen (incrementing the `page` parameter).
   * Each repository should display Repository Name, Repository Description, Author Name / Photo, Number of Stars, Number of Forks
   * When touching an item, you should bring the Pull Requests list from the repository
 - __Pull Requests from a repository__. Example call in API: `https://api.github.com/repos/<criador>/<repositório>/pulls`
-  * Each item on the list should display Name / Photo of the PR author, PR Title, Date of PR and Body of PR
+  * Each item on the list should display Name / Photo of the PR owner, PR Title, Date of PR and Body of PR
   * When touching an item, you should open in the browser the page of the Pull Request in question
 
 ### **The solution MUST contain** ##
@@ -29,7 +29,7 @@ Create an application to query the [GitHub API] (https://developer.github.com/v3
 
 ### **OBS** ###
 
-The mockup photo is merely illustrative.
+The mockup avatar_url is merely illustrative.
  
 
 ### **Submission process** ###

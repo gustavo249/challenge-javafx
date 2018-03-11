@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.Group?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.HomeController">
+    <children>
+        <VBox layoutX="39.0" layoutY="35.0" prefHeight="331.0" prefWidth="523.0">
+            <children>
+                <Pane prefHeight="76.0" prefWidth="523.0">
+                    <children>
+                        <Label fx:id="repoName" layoutX="40.0" layoutY="6.0" text="Repo name" />
+                        <Label fx:id="repoDescription" layoutX="40.0" layoutY="38.0" text="Description" />
+                        <Label fx:id="author" layoutX="375.0" layoutY="30.0" text="Author" />
+                  <ImageView fx:id="authorImage" fitHeight="53.0" fitWidth="60.0" layoutX="449.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" />
+                  <Pane layoutX="140.0" layoutY="18.0" prefHeight="41.0" prefWidth="235.0">
+                     <children>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="2.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" style="-fx-image: url(&quot;https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Gold_Star.svg/2000px-Gold_Star.svg.png&quot;);" />
+                        <Label fx:id="starsLabel" layoutX="27.0" layoutY="12.0" text="No stars" />
+                        <ImageView fitHeight="25.0" fitWidth="37.0" layoutX="93.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" style="-fx-image: url(&quot;http://forked.yannick.io/images/logo.png&quot;);" />
+                        <Label fx:id="forksLabel" layoutX="118.0" layoutY="11.0" text="No Forks" />
+                     </children>
+                  </Pane>
+                    </children>
+                </Pane>
+                <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="529.0" text="Next page" />
+            </children>
+        </VBox>
+    </children>
+</Pane>

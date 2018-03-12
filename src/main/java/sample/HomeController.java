@@ -1,12 +1,15 @@
 package sample;
 
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import model.Repository;
 import service.GitHubServiceGenerator;
@@ -25,6 +28,14 @@ public class HomeController {
     @FXML
     private VBox vBox;
 
+    @FXML
+    private Button nextBtn;
+    @FXML
+    private Button backBtn;
+
+
+    private int page = 1;
+
     public HomeController() {
         githubClient = new GithubClientImpl(new GitHubServiceGenerator());
     }
@@ -33,14 +44,32 @@ public class HomeController {
     private void initialize() {
         System.out.println("Initializing home controller");
 
-        List<Repository> popularRepositories = githubClient.getPopularRepositories(1);
+
+        nextBtn.setOnAction(event -> populateRepositories(++page));
+        backBtn.setOnAction(event -> populateRepositories(--page));
+
+        populateRepositories(page);
+
+    }
+
+    private void populateRepositories(int page) {
+        if (page == 1) {
+            backBtn.setDisable(true);
+        } else {
+            backBtn.setDisable(false);
+        }
+
+        vBox.getChildren().clear();
+
+        List<Repository> popularRepositories = githubClient.getPopularRepositories(page);
 
         for (Repository repository : popularRepositories) {
 
             BorderPane container = new BorderPane();
-            container.setPrefHeight(76.0);
-            container.setPrefWidth(523.0);
-            
+            container.setMaxHeight(75.0);
+            container.setMaxWidth(300.0);
+            container.setOpaqueInsets(new Insets(0, 0, 10, 0));
+
             Label repoName = new Label(repository.getName());
             repoName.setLayoutX(40.0);
             repoName.setLayoutY(6.0);
@@ -48,6 +77,7 @@ public class HomeController {
             Label description = new Label(repository.getDescription());
             description.setLayoutX(70.0);
             description.setLayoutY(38.0);
+            description.setWrapText(true);
 
 
 
@@ -86,8 +116,6 @@ public class HomeController {
             container.setLeft(left);
 
             VBox right = new VBox();
-            right.setLayoutX(175.0);
-            right.setLayoutY(30.0);
 
             ImageView avatar = new ImageView(repository.getOwner().getAvatar_url());
             avatar.setFitHeight(53.0);
@@ -103,6 +131,5 @@ public class HomeController {
 
             vBox.getChildren().add(container);
         }
-
     }
 }

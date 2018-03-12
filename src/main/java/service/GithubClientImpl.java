@@ -43,9 +43,4 @@ public class GithubClientImpl implements GithubClient {
 
         return repositories;
     }
-
-    @Override
-    public List<Repository> getPopularRepositories() {
-        return getPopularRepositories(1);
-    }
 }
